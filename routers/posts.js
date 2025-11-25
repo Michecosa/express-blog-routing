@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const posts = require("../data/posts");
 
 router.get("/", (req, res) => {
-  res.send("Lista dei post");
+  res.json(posts);
 });
 
 router.get("/:id", (req, res) => {
-  res.send(`Dettagli del post ${req.params.id}`);
+  const post = posts.find((p) => p.id == req.params.id);
+  res.json(post);
 });
 
 router.post("/", (req, res) => {
