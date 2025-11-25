@@ -7,7 +7,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const post = posts.find((p) => p.id == req.params.id);
+  const id = Number(req.params.id);
+  const post = posts.find((p) => p.id === id);
   res.json(post);
 });
 
